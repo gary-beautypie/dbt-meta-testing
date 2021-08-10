@@ -28,8 +28,6 @@
 
             {% for column in model_columns %}
 
-                {% set column = column | lower %}
-
                 {% if column in model.columns.keys() %}
 
                     {{ dbt_meta_testing.logger(column ~ " is in " ~ model.columns.keys()) }}
