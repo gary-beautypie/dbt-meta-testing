@@ -1,5 +1,5 @@
 {% macro errors_invalid_config_tests() %}
-	{{ return(adapter.dispatch("errors_invalid_config_tests", "dbt_meta_testing")(varargs))}}
+	{{ return(adapter.dispatch("errors_invalid_config_tests", ["dbt_meta_testing"])(varargs))}}
 {% endmacro %}
 
 {% macro default__errors_invalid_config_tests(varargs) %}
