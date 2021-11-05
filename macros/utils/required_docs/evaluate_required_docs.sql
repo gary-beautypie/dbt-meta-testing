@@ -16,7 +16,7 @@
 
         {% if model.config.required_docs==True and model.config.get("materialized", "") not in ("", "ephemeral")%}
             
-            {% set model_columns = adapter.get_columns_in_relation(ref(model.package_name, model.name)) 
+            {% set model_columns = adapter.get_columns_in_relation(ref(model.name)) 
                 | map(attribute="column") | list %}
             {{ dbt_meta_testing.logger(model_columns | map(attribute="column") | list) }}
 
