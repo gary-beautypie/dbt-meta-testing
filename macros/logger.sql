@@ -16,13 +16,13 @@
 
     {% if not log_level in log_levels.keys() %}
         {% set formatted_keys = log_levels.keys() | list | join(',') %}
-        {{ 
+        {{
             exceptions.raise_compiler_error(
-                "Invalid logging level. Got '" ~ level ~ "'. Require one of: '" 
-                ~ formatted_keys ~ "'") 
+                "Invalid logging level. Got '" ~ level ~ "'. Require one of: '"
+                ~ formatted_keys ~ "'")
         }}
     {% endif %}
-    
+
     {% set log_bool = log_levels[log_level] >= log_levels[setting_level] %}
     {{ log(modules.datetime.datetime.now() ~ ' ' ~ log_level ~ ':' ~ this ~ ':' ~ log_message, info=log_bool) }}
 

@@ -15,7 +15,7 @@ Formats a list of either strings or tuples into a bulleted list for error output
         {% if obj is string %}
 
             {% do output_list.append(" - " ~ obj) %}
-        
+
         {% elif obj is iterable %}
 
             {% do output_list.append(" - " ~ obj[0] ~ "." ~ obj[1]) %}

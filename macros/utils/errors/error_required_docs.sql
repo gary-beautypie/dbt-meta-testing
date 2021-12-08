@@ -1,17 +1,17 @@
 {% macro error_required_docs(missing_model_errors, missing_columns_errors, missing_description_errors) %}
 	{{ return(
-        adapter.dispatch("error_required_docs", 
+        adapter.dispatch("error_required_docs",
         ["dbt_meta_testing"])(
-            missing_model_errors, 
-            missing_columns_errors, 
+            missing_model_errors,
+            missing_columns_errors,
             missing_description_errors
             )
         ) }}
 {% endmacro %}
 
 {% macro default__error_required_docs(
-            missing_model_errors, 
-            missing_columns_errors, 
+            missing_model_errors,
+            missing_columns_errors,
             missing_description_errors
             ) %}
 

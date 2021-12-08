@@ -3,9 +3,9 @@
 {% endmacro %}
 
 {% macro default__error_invalid_config_docs(varargs) %}
-   
+
     {% set error %}
-    Invalid 'required_docs' configuration.  
+    Invalid 'required_docs' configuration.
     Expected boolean. Received: '{{ varargs[0] }}'
     on model '{{ varargs[1] }}'
     {% endset %}

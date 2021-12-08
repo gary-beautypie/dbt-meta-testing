@@ -11,7 +11,7 @@
     {% else %}
 
         {{ exceptions.raise_compiler_error(error_to_raise) }}
-    
+
     {% endif %}
 
 {% endmacro %}

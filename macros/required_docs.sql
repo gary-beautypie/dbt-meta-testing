@@ -16,13 +16,13 @@
     {% if any_error is not none %}
 
         {% set result = dbt_meta_testing.format_raise_error(any_error) %}
-        
+
     {% endif %}
 
     -- Evaluate configuration
     {% set any_error = dbt_meta_testing.evaluate_required_docs(filtered_models) %}
     {% if any_error is not none %}
-        
+
         {% set result = dbt_meta_testing.format_raise_error(any_error) %}
 
     {% else %}

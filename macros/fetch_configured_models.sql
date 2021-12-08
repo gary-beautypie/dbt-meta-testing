@@ -18,7 +18,7 @@
 
     {% endfor %}
 
-    /* 
+    /*
     If arg `models` is provided, filter fetched models to only those
     provided, either in space delimited string or via `dbt list -m <selection_syntax>`.
 
@@ -33,7 +33,7 @@
         {{ dbt_meta_testing.logger("Building `filtered_models_list`:") }}
         {% for m in models_list %}
 
-            /* 
+            /*
             Assumes "." delimited string is output from `dbt list` and the last
             delimitee is the model name, eg. dbt_meta_testing.example.model_1
             */
@@ -53,11 +53,11 @@
 
                 {% do final_models_list.append(m) %}
                 {{ dbt_meta_testing.logger("m is: " ~ m) }}
-            
+
             {% endif %}
 
         {% endfor %}
-    
+
     {% else %}
 
         {{ dbt_meta_testing.logger("else in fetch models triggered, configured is: " ~ configured_models) }}
