@@ -28,6 +28,6 @@ Formats a list of either strings or tuples into a bulleted list for error output
 
     {% endfor %}
 
-    {{ return(output_list | join("\n")) }}
+    {{ return(output_list | sort | join("\n")) }}
 
 {% endmacro %}
