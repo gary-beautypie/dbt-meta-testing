@@ -1,5 +1,5 @@
 {% macro evaluate_required_docs(models_to_evaluate) %}
-	{{ return(adapter.dispatch("evaluate_required_docs", ["dbt_meta_testing"])(models_to_evaluate))}}
+	{{ return(adapter.dispatch("evaluate_required_docs", "dbt_meta_testing")(models_to_evaluate))}}
 {% endmacro %}
 
 {% macro default__evaluate_required_docs(models_to_evaluate) %}
@@ -16,7 +16,7 @@
 
         {% if model.config.required_docs==True and model.config.get("materialized", "") not in ("", "ephemeral")%}
             
-            {% set model_columns = adapter.get_columns_in_relation(ref(model.name)) 
+            {% set model_columns = adapter.get_columns_in_relation(ref(model.package_name, model.name))
                 | map(attribute="column") | list %}
             {{ dbt_meta_testing.logger(model_columns | map(attribute="column") | list) }}
 
@@ -27,6 +27,10 @@
             {% endif %}
 
             {% for column in model_columns %}
+
+                {% if var("convert_column_names_to_lower_case", true) is true %}
+                    {% set column = column | lower %}
+                {% endif %}
 
                 {% if column in model.columns.keys() %}
 

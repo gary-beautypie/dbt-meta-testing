@@ -263,6 +263,11 @@ Usage:
 dbt run-operation required_tests [--args "{'models': '<space_delimited_models>'}"]
 ```
 
+By default, column names are assumed to be lower case in the DBT documentation,
+if this is not the case in your project, setting the variable
+`convert_column_names_to_lower_case` to `false` in `dbt_project.yml` will
+compare the column names in the case they appear.
+
 ### required_docs ([source](macros/required_tests.sql))
 Validates that models meet the `+required_docs` configurations applied in
 `dbt_project.yml`. Typically used only as a `run-operation` in a CI pipeline.
